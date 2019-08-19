@@ -11,9 +11,9 @@ import org.junit.runner.RunWith;
 			plugin = {"html:target/default-cucumber-reports," ,
 					"json:target/cucumber.json",
 					"rerun:target/rerun.txt"},
-			features = "src/test/resources/com/bitrix24/features",
-			glue = "com.bitrix24.step_definitions",
-			tags = "",
+			features = "src/test/recources/com/Bitrix24/features/",
+			glue = "com/bitrix24/step_definitions",
+			tags = "@wip",
 			dryRun = true
 			
 			
