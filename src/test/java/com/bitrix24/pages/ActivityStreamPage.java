@@ -1,7 +1,9 @@
 package com.bitrix24.pages;
 
 import com.bitrix24.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
@@ -13,15 +15,15 @@ public class ActivityStreamPage {
     public ActivityStreamPage() {
         PageFactory.initElements(Driver.get(), this);
     }
-    @FindBy(xpath = "//*[text()=\"Task\"]")
+    @FindBy(xpath = "//span[text()='Task']")
     public WebElement task;
     //    post task selection
-    @FindBy(xpath = "//*[@class=\"task-info-panel-title\"]")
+    @FindBy(xpath = "//*[@class=\"task-info-panel-title\"]/input")
     public WebElement taskTitle;
     @FindBy(xpath = "//div[@class=\"task-info\"]//div[@class=\"bx-html-editor\"]")
     public WebElement taskContent;
     //    elements regarding deadlines
-    @FindBy(xpath = "//div[@class=\"task-options-item-more\"]//input[@type=\"text\"]")
+    @FindBy(xpath = "//div[@class=\"task-options-item-more\"]//input[@type=\"text\"]/input")
     public WebElement deadline;
     @FindBy(xpath = "//a[@class=\"bx-calendar-top-month\"]")
     public WebElement dlMonth;
@@ -46,14 +48,14 @@ public class ActivityStreamPage {
     @FindBy(xpath = "//span[text()=\"Select\"]")
     public WebElement dlSubmit;
     //submit button
-    @FindBy(xpath = "//button[@id = \"blog-submit-button-save\"]")
+    @FindBy(css = "#blog-submit-button-save")
     public WebElement send;
     public void navigateToTask(){
         task.click();
     }
     public void setTaskTitle(String str){
-        taskTitle.clear();
-        taskTitle.sendKeys("str");
+       // taskTitle.clear();
+        taskTitle.sendKeys(str);
     }
     public void setTaskContent(String str){
         taskContent.clear();
@@ -97,4 +99,15 @@ public class ActivityStreamPage {
     public void submitTask(){
         send.click();
     }
+
+    public void switchWitch(String thankyou){
+        WebDriver driver = Driver.get();
+        driver.switchTo().frame(Driver.get().findElement(By.xpath("(//iframe)[2]")));
+        driver.findElement(By.tagName("body")).sendKeys(thankyou);
+        driver.switchTo().defaultContent();
+
+
+
+    }
+
 }

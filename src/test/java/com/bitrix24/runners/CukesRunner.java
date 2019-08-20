@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
 			features = "src/test/recources/com/Bitrix24/features/",
 			glue = "com/bitrix24/step_definitions",
 			tags = "@wip",
-			dryRun = true
+			dryRun = false
 			
 			
 	)
