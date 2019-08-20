@@ -1,5 +1,6 @@
 Feature: Creating a new task
 
+  @wip
   Scenario: Go to "Activity Stream"
     Given I login as a "helpDesk"
     When I navigate to "Acticity Stream"
